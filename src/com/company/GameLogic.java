@@ -1,6 +1,7 @@
 package com.company;
 
 import java.util.Random;
+import java.util.Scanner;
 
 class GameLogic {
     private User user;
@@ -9,6 +10,7 @@ class GameLogic {
     private int userScore;
     private int computerScore;
     private int numberOfGames;
+    private Scanner in = new Scanner(System.in);
     private static final String text = "Камень, ножницы, бумага";
     private static final String text1 = "\nВаш ход ";
     private static final String text2 = "Ход компьютера ";
@@ -16,14 +18,20 @@ class GameLogic {
     private static final String text4 = " побеждает ";
     private static final String text5 = ". Вы победили!";
     private static final String text6 = ". Вы проиграли!";
+    private static final String text7 = "Хотите сыграть ещё раз?";
 
-    GameLogic() {
+    public Scanner getIn() {
+        return in;
+    }
+
+    public GameLogic() {
         user = new User();
         computer = new Computer();
         field = new Field();
         userScore = 0;
         computerScore = 0;
         numberOfGames = 0;
+        
     }
 
     void start() {
@@ -32,7 +40,7 @@ class GameLogic {
         input();
         compareMoves(field.getFirstUserMove(),field.getSecondUserMove());
 
-        if (user.playAgain()) {
+        if (playAgain()) {
             System.out.println();
             start();
         } else printGameStats();
@@ -83,6 +91,34 @@ class GameLogic {
             return moves[index];
         }
     }
+
+    private static class User {
+        GameLogic gl = new GameLogic();
+
+        Move getMove() {
+            System.out.print(text);
+            String input = gl.getIn().nextLine().toUpperCase();
+            char firstLetter = input.charAt(0);
+            if (firstLetter == 'К' || firstLetter == 'Н' || firstLetter == 'Б') {
+                switch (firstLetter) {
+                    case 'К':
+                        return Move.ROCK;
+                    case 'Н':
+                        return Move.SCISSORS;
+                    case 'Б':
+                        return Move.PAPER;
+                }
+            }
+            return getMove();
+        }
+    }
+
+    boolean playAgain() {
+        System.out.println(text7);
+        String input = in.nextLine().toUpperCase();
+        return input.charAt(0) == 'Д';
+    }
+
 
 }
 
