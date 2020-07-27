@@ -14,18 +14,8 @@ package com.collections;
 import java.util.ArrayList;
 import java.util.List;
 
-class MyCollection extends ArrayList<Integer> {
+class MyCollection {
     private static List<Integer> values = new ArrayList<>();
-
-    public static void main(String[] args) {
-        values.add(1);
-        values.add(2);
-        values.add(3);
-        values.add(5);
-        values.remove(1);
-        System.out.println(values);
-
-    }
 
     public MyCollection(List<Integer> values) {
         MyCollection.values = values;
@@ -35,25 +25,20 @@ class MyCollection extends ArrayList<Integer> {
         return values.get(index);
     }
 
-    
-    public boolean add(Integer value) {
-        for (Integer i : values) {
-            i += value;
+    public void add(Integer value) {
+        for (int i = 0; i< values.size(); i++) {
+            values.set(i,values.get(i)+value);
         }
-        return values.add(value);
+        values.add(value);
     }
 
-    public boolean remove(Integer value) {
-
-        for (Integer i : values) {
-            i -= value;
+    public void remove(Integer value) {
+        for (int i = 0; i < values.size(); i++) {
+            values.set(i,values.get(i) - value);
         }
-        return values.remove(value);
+        values.remove(value);
+
     }
-//    @Override
-//    public boolean add(Integer integer) {
-//        return super.add(integer);
-//    }
 
 
     public double getAverage() {
@@ -82,6 +67,28 @@ class MyCollection extends ArrayList<Integer> {
         }
         return min;
     }
+    public void test(){
+        System.out.println(values);
+    }
+}
+class Main{
+    public static void main(String[] args) {
+        MyCollection list = new MyCollection(new ArrayList<>());
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.add(5);
+        list.test();
+
+        list.remove(5);
+        list.test();
+
+        System.out.println(list.getIndex(1));
 
 
+        System.out.println("Среднее число: " + list.getAverage());
+        System.out.println("Максимальное число: " + list.maxValue());
+        System.out.println("Минимальное число: " + list.minValue());
+
+    }
 }
