@@ -9,7 +9,7 @@
 //        Недопустим ввод в коллекцию null, символов и других значений, кроме целых чисел.
 //        Результатом работы должен быть отдельный репозиторий github/bitbucket с README файлом, который описывает задание, сам класс и содержит инструкции по запуску приложения.
 
-package com.collections;
+package com.lesson02Collections;
 
 import java.util.ArrayList;
 import java.util.List;

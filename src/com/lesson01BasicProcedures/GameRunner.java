@@ -1,4 +1,4 @@
-package com.company;
+package com.lesson01BasicProcedures;
 
 public class GameRunner {
     public static void main(String[] args) {

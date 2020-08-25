@@ -12,7 +12,7 @@
 //    Result: false
 //    Дубликатов нет
 
-package com.collections;
+package com.lesson02Collections;
 
 public class Duplicates {
     static public void main(String[] args) {
@@ -26,7 +26,7 @@ public class Duplicates {
         for (int i = 0; i < arr.length; i++) {
             for (int j = i+1; j < arr.length; j++) {
                 if (arr[i]==arr[j]) {
-                    System.out.println(arr[i] + " is duplicate!");
+                    System.out.println(arr[i] + " is duplicated!");
                     return true;
                 }
             }
