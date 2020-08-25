@@ -11,7 +11,7 @@ import java.util.List;
 public class SkillRepository {
     public static String text;
 
-    public Skill getById(Long id) {
+    public Skill getById(Long id) throws Exception {
         Skill skill = new Skill();
         try {
             Path path = Paths.get("C:/Users/Никита/IdeaProjects/javaCore/src/com/resources/skills.txt");
@@ -26,20 +26,20 @@ public class SkillRepository {
                     text = stringBuilder.toString();
                 }
             }
-        } catch (Exception e) { //Открытие файла
-            e.printStackTrace();
         }
-        String[] skills = text.split(",");
-        for(String s:skills){
-            for (char chars: s.toCharArray()){
-                if (chars==id) {
-                    skill.setId(chars);
-                    skill.setName(s);
-                    break;
+        catch (Exception e) { //Открытие файла
+            String[] skills = text.split(",");
+            for(String s:skills){
+                for (char chars: s.toCharArray()){
+                    if (chars==id) {
+                        skill.setId(chars);
+                        skill.setName(s);
+                        return skill;
+                    }
                 }
             }
+            throw new Exception();
         }
-
         return skill;
     }
 
@@ -48,7 +48,7 @@ public class SkillRepository {
     }
 
     public boolean save(Skill skill) {
-        
+
         return false;
     }
 
