@@ -4,8 +4,7 @@ package com.lesson03Streams.Repository;
 import com.lesson03Streams.Model.Skill;
 
 import java.io.*;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+
 import java.util.List;
 
 public class SkillRepository {
@@ -14,30 +13,29 @@ public class SkillRepository {
     public Skill getById(Long id) throws Exception {
         Skill skill = new Skill();
         try {
-            Path path = Paths.get("C:/Users/Никита/IdeaProjects/javaCore/src/com/resources/skills.txt");
-            File file = new File(String.valueOf(path));
+            File file = new File("C:/Users/Никита/IdeaProjects/javaCore/src/com/resources/skills.txt");
             StringBuilder stringBuilder = new StringBuilder();
-            try (FileInputStream in = new FileInputStream(file.getAbsoluteFile())) {
-                try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(in))){
+            try (FileInputStream in = new FileInputStream(file)) {
+                try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(in))) {
                     String line;
-                    while ((line = bufferedReader.readLine())!=null){
+                    while ((line = bufferedReader.readLine()) != null) {
                         stringBuilder.append(line);
                     }
                     text = stringBuilder.toString();
-                }
-            }
-        }
-        catch (Exception e) { //Открытие файла
-            String[] skills = text.split(",");
-            for(String s:skills){
-                for (char chars: s.toCharArray()){
-                    if (chars==id) {
-                        skill.setId(chars);
-                        skill.setName(s);
-                        return skill;
+
+                    String[] skills = text.split(" ");
+                    for (String s: skills) {
+                        if (s.contains(id.toString())&&id.equals(Long.parseLong(s))) {
+                            skill.setId(Long.parseLong(s));
+                            skill.setName(s);
+                            break;
+
+                        }
                     }
                 }
             }
+        } catch (Exception e) { //Открытие файла
+
             throw new Exception();
         }
         return skill;
