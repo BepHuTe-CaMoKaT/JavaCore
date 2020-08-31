@@ -5,6 +5,7 @@ import com.lesson03Streams.Model.Skill;
 
 import java.io.*;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class SkillRepository {
@@ -23,14 +24,16 @@ public class SkillRepository {
                     }
                     text = stringBuilder.toString();
 
-                    String[] skills = text.split(" ");
-                    for (String s: skills) {
-                        if (s.contains(id.toString())&&id.equals(Long.parseLong(s))) {
-                            skill.setId(Long.parseLong(s));
-                            skill.setName(s);
-                            break;
-
+                    String[] skills = text.split("/");
+//                    String temp = Arrays.toString(skills);
+//                    String[] sk = temp.split(" ");
+                    for (String s: skills){
+                        s.split(" ");
+                        if (s[0]==id){
+                            skill.setId(Long.parseLong(skills[0]));
+                            skill.setName(skills[1]);
                         }
+
                     }
                 }
             }
