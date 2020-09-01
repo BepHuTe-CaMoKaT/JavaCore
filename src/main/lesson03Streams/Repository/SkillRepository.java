@@ -1,11 +1,10 @@
-package com.lesson03Streams.Repository;
+package main.lesson03Streams.Repository;
 
 
-import com.lesson03Streams.Model.Skill;
+import main.lesson03Streams.Model.Skill;
 
 import java.io.*;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class SkillRepository {

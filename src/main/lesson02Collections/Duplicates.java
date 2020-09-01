@@ -12,7 +12,7 @@
 //    Result: false
 //    Дубликатов нет
 
-package com.lesson02Collections;
+package main.lesson02Collections;
 
 public class Duplicates {
     static public void main(String[] args) {

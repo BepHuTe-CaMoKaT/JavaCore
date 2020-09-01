@@ -1,4 +1,4 @@
-package com.lesson01BasicProcedures;
+package main.lesson01BasicProcedures;
 
 public enum Move {
     PAPER,

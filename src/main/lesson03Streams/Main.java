@@ -1,6 +1,6 @@
-package com.lesson03Streams;
+package main.lesson03Streams;
 
-import com.lesson03Streams.Repository.SkillRepository;
+import main.lesson03Streams.Repository.SkillRepository;
 
 public class Main {
     public static void main(String[] args) throws Exception {

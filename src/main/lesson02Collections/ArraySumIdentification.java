@@ -10,7 +10,7 @@
 //        Т.е. индексы 1 и 2 (значение 8 и 15) в сумме дают искомое число 23
 
 
-package com.lesson02Collections;
+package main.lesson02Collections;
 
 import java.util.Arrays;
 

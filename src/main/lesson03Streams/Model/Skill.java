@@ -1,4 +1,4 @@
-package com.lesson03Streams.Model;
+package main.lesson03Streams.Model;
 
 public class Skill {
     private long id;
